@@ -1,8 +1,3 @@
-.name {
-    text-align: center;
-    padding: 10px;
-}
-
 .footer {
     bottom: 30px;
     position: absolute;
@@ -12,4 +7,12 @@
 
 .botton-footer {
     width: 50%;
+}
+
+.name {
+    text-align: center;
+}
+
+.input {
+    min-width: 50%;
 }

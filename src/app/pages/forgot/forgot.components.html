@@ -1,19 +1,19 @@
 <section>
-    <h2 class="name">GCriva</h2>
+    <h2 class="name">Esqueci minha senha</h2>
     <form>
         <md-grid-list cols="1" rowHeight="100px">
             <md-grid-tile>
                 <md-input-container class="input">
-                    <input mdInput type="email" name="email-login" [(ngModel)]="loginData.email" placeholder="Email">
+                    <input mdInput type="email" name="forgot-email" [(ngModel)]="objt.email" placeholder="Email">
                 </md-input-container>
             </md-grid-tile>
             <md-grid-tile>
                 <md-input-container class="input">
-                    <input mdInput type="password" name="password-login" [(ngModel)]="loginData.password" placeholder="Senha">
+                    <input mdInput type="email" name="forgot-confirm" [(ngModel)]="objt.confirEmail" placeholder="Confirmar Email">
                 </md-input-container>
             </md-grid-tile>
             <md-grid-tile class="input">
-                <button md-raised-button type="submit" (click)="login()">Login</button>
+                <button md-raised-button type="submit" (click)="forgot()">Confirmar</button>
             </md-grid-tile>
         </md-grid-list>
     </form>

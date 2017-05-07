@@ -19,25 +19,6 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-    <nav>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Sobre
-      </a>
-      <a [routerLink]=" ['./login'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Login
-      </a>
-      <a [routerLink]=" ['./reset-password'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Reset Password
-      </a>
-    </nav>
-
     <main>
       <router-outlet></router-outlet>
     </main>
