@@ -34,7 +34,9 @@ import { MdButtonModule,
   MdCheckboxModule,
   MdGridListModule,
   MdInputModule,
-  MdSnackBarModule
+  MdSnackBarModule,
+  MdSidenavModule,
+  MdIconModule
 } from '@angular/material';
 
 // pages
@@ -42,6 +44,8 @@ import { HomeComponent } from './pages/home';
 import { AboutComponent } from './pages/about';
 import { LoginComponent } from './pages/login';
 import { ResetPasswordComponent } from './pages/reset-password';
+import { ForgotComponent } from './pages/forgot';
+import { MenuComponent } from './pages/menu';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -70,18 +74,23 @@ type StoreType = {
     NoContentComponent,
     XLargeDirective,
     LoginComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    MenuComponent,
+    ForgotComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    BrowserAnimationsModule, MdButtonModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
     MdCheckboxModule,
     MdGridListModule,
     MdInputModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdSidenavModule,
+    MdIconModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

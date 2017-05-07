@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home';
 import { AboutComponent } from './pages/about';
 import { LoginComponent } from './pages/login';
 import { ResetPasswordComponent } from './pages/reset-password';
+import { ForgotComponent } from './pages/forgot';
 
 import { DataResolver } from './app.resolver';
 
@@ -16,5 +17,6 @@ export const ROUTES: Routes = [
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
   { path: 'login', component: LoginComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
+  { path: 'forgot', component: ForgotComponent },
   { path: '**',    component: NoContentComponent },
 ];

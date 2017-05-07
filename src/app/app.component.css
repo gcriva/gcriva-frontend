@@ -6,3 +6,14 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+
+.content {
+    padding-top: 70px;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    background-color: #aba7a7;
+}
