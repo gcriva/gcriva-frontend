@@ -1,24 +1,31 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { MdSnackBar } from '@angular/material';
+import { ApiHttp } from '../../api-http.service';
 
 @Component({
   selector: 'forgot',
-  styleUrls: ['./forgot-components.css'],
+  styleUrls: ['./forgot-components.scss'],
   templateUrl: './forgot.components.html'
 })
 export class ForgotComponent {
 
   public objt: any = {};
   constructor(
-    public http: Http,
+    public http: ApiHttp,
+    public snackBar: MdSnackBar
   ) {}
 
   public forgot() {
     this.http.post('/forgot', this.objt)
-        .subscribe((data) => {
-            console.log(data);
-        }, (error) => {
-          console.log(error);
+      .map((res) => res.json())
+      .subscribe((data) => {
+        this.snackBar.open(data.message, null, { duration: 5000 });
+      }, (errorResponse) => {
+        const error = errorResponse.json();
+
+        this.snackBar.open(error.message ? error.message : error.messages[0], null, {
+          duration: 1500
         });
+      });
   }
 }

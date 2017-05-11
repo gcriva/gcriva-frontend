@@ -1,8 +1,11 @@
 <md-sidenav-container class="container" fullscreen>
     <md-sidenav #sidenav class="sidenav">
+        <div class="profile-area">
+            <img class="picture" [src]="picture()" />
+        </div>
         <md-list>
             <md-list-item class="top-menu">
-                <h2>GCriva Menu</h2>
+                <h2>Menu</h2>
             </md-list-item>
             <md-list-item>
                 <button md-button class="icon-menu button-menu" type="button" (click)="toProjects()">Projetos</button>
@@ -20,6 +23,6 @@
         <div class="sidenav-content">
             <md-icon class="icon-menu" (click)="sidenav.open()">menu</md-icon>
         </div>
-        <div class="name-organization">Gestão GCriva</div>
+        <div class="organization-name">Gestão Gcriva</div>
     </md-toolbar>
 </md-sidenav-container>
