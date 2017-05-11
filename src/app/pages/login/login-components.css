@@ -16,3 +16,7 @@
 .input {
     min-width: 50%;
 }
+
+.center-text {
+    text-align: center;
+}
