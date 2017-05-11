@@ -6,7 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: './menu.components.html'
 })
 export class MenuComponent {
+  public toProjects() {
+    console.log('to projects');
+  }
 
-  constructor(
-  ) {}
+  public toParents() {
+    console.log('to parents');
+  }
+
+  public tostudents() {
+    console.log('to students');
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { MdSnackBar } from '@angular/material';
 
@@ -16,18 +16,20 @@ export class LoginComponent {
   constructor(
     public route: ActivatedRoute,
     public http: Http,
-    public snackBar: MdSnackBar
+    public snackBar: MdSnackBar,
+    public router: Router
   ) {}
 
   public login() {
-    this.http.post('/login', this.loginData)
-        .subscribe((data) => {
-            console.log(data);
-        }, (error) => {
-          console.log(error);
-          let response = JSON.parse(error._body);
-          this.openSnackBar(response.message.msg, 'OK');
-        });
+    this.router.navigate(['default']);
+    // this.http.post('/login', this.loginData)
+    //     .subscribe((data) => {
+    //         console.log(data);
+    //     }, (error) => {
+    //       console.log(error);
+    //       let response = JSON.parse(error._body);
+    //       this.openSnackBar(response.message.msg, 'OK');
+    //     });
   }
 
   public openSnackBar(message: string, action: string) {

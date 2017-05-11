@@ -6,6 +6,7 @@ import { AboutComponent } from './pages/about';
 import { LoginComponent } from './pages/login';
 import { ResetPasswordComponent } from './pages/reset-password';
 import { ForgotComponent } from './pages/forgot';
+import { DefaultComponent } from './pages/default';
 
 import { DataResolver } from './app.resolver';
 
@@ -18,5 +19,6 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: 'forgot', component: ForgotComponent },
+  { path: 'default', component: DefaultComponent },
   { path: '**',    component: NoContentComponent },
 ];

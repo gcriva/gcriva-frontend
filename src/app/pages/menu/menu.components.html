@@ -1,12 +1,25 @@
-<md-sidenav-container fullscreen>
-    <md-sidenav #sidenav>
-        Jolly good!
+<md-sidenav-container class="container" fullscreen>
+    <md-sidenav #sidenav class="sidenav">
+        <md-list>
+            <md-list-item class="top-menu">
+                <h2>GCriva Menu</h2>
+            </md-list-item>
+            <md-list-item>
+                <button md-button class="icon-menu button-menu" type="button" (click)="toProjects()">Projetos</button>
+            </md-list-item>
+            <md-list-item>
+                <button md-button class="icon-menu button-menu" type="button" (click)="toParents()">Familias</button>
+            </md-list-item>
+            <md-list-item>
+                <button md-button class="icon-menu button-menu" type="button" (click)="tostudents()">Alunos</button>
+            </md-list-item>
+        </md-list>
+        
     </md-sidenav>
-
-    <div>
-        <button md-button (click)="sidenav.open()">
-            <md-icon>menu</md-icon>
-        </button>
-    </div>
-
+    <md-toolbar color="primary" class="header">
+        <div class="sidenav-content">
+            <md-icon class="icon-menu" (click)="sidenav.open()">menu</md-icon>
+        </div>
+        <div class="name-organization">Gestão GCriva</div>
+    </md-toolbar>
 </md-sidenav-container>
