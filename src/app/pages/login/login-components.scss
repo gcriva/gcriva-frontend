@@ -2,8 +2,9 @@
 
 .wrapper,
 .footer {
-    max-width: 600px;
     margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
 }
 
 .footer {
@@ -26,6 +27,7 @@
 
 .input {
     min-width: 50%;
+    padding: 0;
 }
 
 .center-text {

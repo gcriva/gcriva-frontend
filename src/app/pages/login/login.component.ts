@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
           this.appState.set('user', jwtHelper.decodeToken(data.token));
       }, (error) => {
-        this.openSnackBar(error.json().message, 'OK');
+        this.openSnackBar(error.json().message || 'Não foi possível conectar ao servidor', 'OK');
       });
   }
 
