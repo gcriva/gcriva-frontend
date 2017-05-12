@@ -9,16 +9,17 @@ import { ForgotComponent } from './pages/forgot';
 import { DefaultComponent } from './pages/default';
 
 import { DataResolver } from './app.resolver';
+import { AuthGuard } from './auth.guard';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
-  { path: 'about', component: AboutComponent },
+  { path: '',      component: LoginComponent },
+  { path: 'home',  component: DefaultComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
   { path: 'login', component: LoginComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: 'forgot', component: ForgotComponent },
-  { path: 'default', component: DefaultComponent },
-  { path: '**',    component: NoContentComponent },
+  { path: 'default', component: DefaultComponent, canActivate: [AuthGuard] },
+  { path: '**',  redirectTo: '', pathMatch: 'full' },
 ];

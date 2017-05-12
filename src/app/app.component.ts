@@ -26,7 +26,7 @@ import { AppState } from './app.service';
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'GCriva';
+  public name = 'Gcriva';
   public url = 'https://twitter.com/AngularClass';
 
   constructor(

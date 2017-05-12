@@ -1,0 +1,29 @@
+@import '~styles/variables';
+
+.wrapper,
+.footer {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer {
+    right: 0;
+    left: 0;
+    bottom: 30px;
+    position: absolute;
+    text-align:center;
+}
+
+.button-footer {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.name {
+    text-align: center;
+    color: $primary-color;
+}
+
+.input {
+    min-width: 50%;
+}
