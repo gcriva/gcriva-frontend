@@ -3,7 +3,7 @@ import { AppState } from '../../app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSidenav } from '@angular/material';
 
-const profileTransforms = 'c_fill,g_face,h_200,q_auto:best,r_max,w_200'
+const profileTransforms = 'c_fill,g_face,h_200,q_auto:best,r_max,w_200';
 const defaultPictureUrl =
   `http://res.cloudinary.com/wagoid/image/upload/${profileTransforms}/empty-profile_h8q7mo.png`;
 
@@ -16,7 +16,7 @@ export class MenuComponent {
   constructor(
     public route: ActivatedRoute,
     private router: Router,
-    private appState: AppState
+    public appState: AppState
   ) {}
 
   public toProjects() {

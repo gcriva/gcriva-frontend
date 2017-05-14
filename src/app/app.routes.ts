@@ -14,13 +14,13 @@ import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
 
 const SECURE_ROUTES: Routes = [
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'home',  component: DefaultComponent, canActivate: [AuthGuard] },
-  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent},
+  { path: 'home',  component: DefaultComponent},
+  { path: 'about', component: AboutComponent},
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
   { path: 'login', component: LoginComponent },
-  { path: 'default', component: DefaultComponent, canActivate: [AuthGuard] }
+  { path: 'default', component: DefaultComponent}
 ];
 
 export const ROUTES: Routes = [
