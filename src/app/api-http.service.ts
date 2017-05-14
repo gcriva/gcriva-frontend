@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgModule } from '@angular/core';
+import { AppState } from './app.service';
 import {
   Http,
   Request,
@@ -12,7 +13,11 @@ import {
 export class ApiHttp extends Http {
   private baseUrl: string;
 
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
+  constructor(
+    backend: ConnectionBackend,
+    defaultOptions: RequestOptions,
+    private appState: AppState
+  ) {
     super(backend, defaultOptions);
 
     this.baseUrl = process.env.NODE_ENV === 'production'
@@ -29,6 +34,27 @@ export class ApiHttp extends Http {
       (<Request> finalUrl).url = this.baseUrl + url.url;
     }
 
-    return super.request(finalUrl, options);
+    let isDone = false;
+
+    // If the request returns very fast, don't show the progress bar
+    setTimeout(() => {
+      if (!isDone) {
+        this.startLoading();
+      }
+    }
+    , 200);
+
+    return super.request(finalUrl, options).finally(() => {
+      isDone = true;
+      this.finishLoading();
+    });
+  }
+
+  public startLoading() {
+    this.appState.set('isLoading', true);
+  }
+
+  public finishLoading() {
+    this.appState.set('isLoading', false);
   }
 }

@@ -42,7 +42,9 @@ import { MdButtonModule,
   MdSidenavModule,
   MdIconModule,
   MdToolbarModule,
-  MdListModule
+  MdListModule,
+  MdMenuModule,
+  MdProgressBarModule
 } from '@angular/material';
 
 // pages
@@ -53,6 +55,7 @@ import { ResetPasswordComponent } from './pages/reset-password';
 import { ForgotComponent } from './pages/forgot';
 import { MenuComponent } from './pages/menu';
 import { DefaultComponent } from './pages/default';
+import { ProfileComponent } from './pages/profile';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -85,7 +88,8 @@ type StoreType = {
     ResetPasswordComponent,
     MenuComponent,
     ForgotComponent,
-    DefaultComponent
+    DefaultComponent,
+    ProfileComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -102,6 +106,8 @@ type StoreType = {
     MdIconModule,
     MdToolbarModule,
     MdListModule,
+    MdMenuModule,
+    MdProgressBarModule,
     ApiHttpModule,
     AuthModule
   ],

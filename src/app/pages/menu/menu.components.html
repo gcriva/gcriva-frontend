@@ -1,28 +1,49 @@
+<md-progress-bar
+  class="progress-bar"
+  *ngIf="appState.state.isLoading"
+  mode="indeterminate"
+></md-progress-bar>
+<md-toolbar color="primary" class="toolbar">
+  <div class="sidenav-content">
+    <md-icon class="icon-menu" (click)="sidenav.toggle()">{{sidenav.opened ? 'arrow_back' : 'menu'}}</md-icon>
+  </div>
+  <div class="organization-name">Gestão Gcriva</div>
+</md-toolbar>
 <md-sidenav-container class="container" fullscreen>
-    <md-sidenav #sidenav class="sidenav">
-        <div class="profile-area">
-            <img class="picture" [src]="picture()" />
-        </div>
-        <md-list>
-            <md-list-item class="top-menu">
-                <h2>Menu</h2>
-            </md-list-item>
-            <md-list-item>
-                <button md-button class="icon-menu button-menu" type="button" (click)="toProjects()">Projetos</button>
-            </md-list-item>
-            <md-list-item>
-                <button md-button class="icon-menu button-menu" type="button" (click)="toParents()">Familias</button>
-            </md-list-item>
-            <md-list-item>
-                <button md-button class="icon-menu button-menu" type="button" (click)="tostudents()">Alunos</button>
-            </md-list-item>
-        </md-list>
-        
-    </md-sidenav>
-    <md-toolbar color="primary" class="header">
-        <div class="sidenav-content">
-            <md-icon class="icon-menu" (click)="sidenav.open()">menu</md-icon>
-        </div>
-        <div class="organization-name">Gestão Gcriva</div>
-    </md-toolbar>
+  <md-sidenav #sidenav class="sidenav">
+    <div class="profile-area">
+      <div class="picture-wrapper">
+        <img class="picture" [src]="picture()" />
+        <button md-icon-button [mdMenuTriggerFor]="menu" class="user-menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </div>
+      <div class="user-name">{{user().name}}</div>
+      <div class="user-email">{{user().email}}</div>
+    </div>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="editProfile(sidenav)">
+        <md-icon>edit</md-icon>
+        <span>Editar perfil</span>
+      </button>
+      <button md-menu-item (click)="logout(sidenav)">
+        <md-icon>arrow_back</md-icon>
+        <span>Sair</span>
+      </button>
+    </md-menu>
+    <md-list>
+      <md-list-item>
+        <button md-button class="icon-menu button-menu" type="button" (click)="tostudents()">Alunos</button>
+      </md-list-item>
+      <md-list-item>
+        <button md-button class="icon-menu button-menu" type="button" (click)="toProjects()">Projetos</button>
+      </md-list-item>
+      <md-list-item>
+        <button md-button class="icon-menu button-menu" type="button" (click)="toParents()">Cursos</button>
+      </md-list-item>
+    </md-list>
+
+  </md-sidenav>
+  <!--All children routes go here-->
+  <router-outlet></router-outlet>
 </md-sidenav-container>

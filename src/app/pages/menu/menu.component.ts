@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AppState } from '../../app.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MdSidenav } from '@angular/material';
 
 const profileTransforms = 'c_fill,g_face,h_200,q_auto:best,r_max,w_200'
 const defaultPictureUrl =
@@ -12,6 +14,8 @@ const defaultPictureUrl =
 })
 export class MenuComponent {
   constructor(
+    public route: ActivatedRoute,
+    private router: Router,
     private appState: AppState
   ) {}
 
@@ -28,8 +32,23 @@ export class MenuComponent {
   }
 
   public picture() {
-    const user = this.appState.get('user');
+    const user = this.appState.state.user || {};
 
-    return user && user.picture ? user.picture : defaultPictureUrl;
+    return user.picture ? user.picture : defaultPictureUrl;
+  }
+
+  public user() {
+    return this.appState.state.user || {};
+  }
+
+  public logout(sidenav: MdSidenav) {
+    sidenav.close();
+    localStorage.setItem('token', null);
+    this.router.navigate(['login']);
+  }
+
+  public editProfile(sidenav: MdSidenav) {
+    sidenav.close();
+    this.router.navigate(['/profile']);
   }
 }

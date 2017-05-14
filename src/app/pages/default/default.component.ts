@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppState } from '../../app.service';
 
 @Component({
   selector: 'default',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './default.component.html'
 })
 export class DefaultComponent {
+  constructor(public appState: AppState) {}
 }
