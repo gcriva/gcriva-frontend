@@ -30,6 +30,7 @@ import { ApiHttpModule } from './api-http.module';
 import { AuthGuard } from './auth.guard';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './pages/home/x-large';
+import { CustomDirectivesModule } from './directives';
 
 // material
 import 'hammerjs';
@@ -109,7 +110,8 @@ type StoreType = {
     MdMenuModule,
     MdProgressBarModule,
     ApiHttpModule,
-    AuthModule
+    AuthModule,
+    CustomDirectivesModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
