@@ -20,12 +20,12 @@ const SECURE_ROUTES: Routes = [
   { path: 'usuarios',  component: UsersComponent, data: { name: 'Usuários', role: 'admin' } },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule' },
-  { path: 'barrel', loadChildren: './+barrel#BarrelModule' },
-  { path: 'login', component: LoginComponent }
+  { path: 'barrel', loadChildren: './+barrel#BarrelModule' }
 ];
 
 export const ROUTES: Routes = [
   { path: '',  component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'forgot', component: ForgotComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: '', component: MenuComponent, canActivate: [AuthGuard], children: SECURE_ROUTES },
