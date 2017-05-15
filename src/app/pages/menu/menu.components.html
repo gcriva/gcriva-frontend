@@ -7,7 +7,7 @@
   <div class="sidenav-content">
     <md-icon class="icon-menu" (click)="sidenav.toggle()">{{sidenav.opened ? 'arrow_back' : 'menu'}}</md-icon>
   </div>
-  <div class="organization-name">Gestão Gcriva</div>
+  <div class="organization-name">{{route.firstChild.data.value.name}}</div>
 </md-toolbar>
 <md-sidenav-container class="container" fullscreen>
   <md-sidenav #sidenav class="sidenav">
@@ -18,31 +18,25 @@
           <md-icon>more_vert</md-icon>
         </button>
       </div>
-      <div class="user-name">{{user().name}}</div>
-      <div class="user-email">{{user().email}}</div>
+      <div class="user-name">{{appState.state.user.name}}</div>
+      <div class="user-email">{{appState.state.user.email}}</div>
     </div>
     <md-menu #menu="mdMenu">
-      <button md-menu-item (click)="editProfile(sidenav)">
+      <button md-menu-item (click)="editProfile()">
         <md-icon>edit</md-icon>
         <span>Editar perfil</span>
       </button>
-      <button md-menu-item (click)="logout(sidenav)">
+      <button md-menu-item (click)="logout()">
         <md-icon>arrow_back</md-icon>
         <span>Sair</span>
       </button>
     </md-menu>
-    <md-list>
-      <md-list-item>
-        <button md-button class="icon-menu button-menu" type="button" (click)="tostudents()">Alunos</button>
-      </md-list-item>
-      <md-list-item>
-        <button md-button class="icon-menu button-menu" type="button" (click)="toProjects()">Projetos</button>
-      </md-list-item>
-      <md-list-item>
-        <button md-button class="icon-menu button-menu" type="button" (click)="toParents()">Cursos</button>
-      </md-list-item>
-    </md-list>
-
+    <md-nav-list>
+      <a md-list-item *ngIf="isAdmin()" [routerLink]="['/usuarios']">Usuários</a>
+      <a md-list-item [routerLink]="['/beneficiarios']">Beneficiários</a>
+      <a md-list-item [routerLink]="['/projetos']">Projetos</a>
+      <a md-list-item [routerLink]="['/cursos']">Cursos</a>
+    </md-nav-list>
   </md-sidenav>
   <!--All children routes go here-->
   <router-outlet></router-outlet>

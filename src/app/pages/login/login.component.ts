@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     }
 
     if (!tokenIsExpired) {
-      this.router.navigateByUrl('/default');
+      this.router.navigateByUrl('/home');
     }
   }
 

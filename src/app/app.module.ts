@@ -45,7 +45,8 @@ import { MdButtonModule,
   MdToolbarModule,
   MdListModule,
   MdMenuModule,
-  MdProgressBarModule
+  MdProgressBarModule,
+  MdCardModule
 } from '@angular/material';
 
 // pages
@@ -57,6 +58,7 @@ import { ForgotComponent } from './pages/forgot';
 import { MenuComponent } from './pages/menu';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
+import { UsersComponent } from './pages/users';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -90,7 +92,8 @@ type StoreType = {
     MenuComponent,
     ForgotComponent,
     DefaultComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -109,6 +112,7 @@ type StoreType = {
     MdListModule,
     MdMenuModule,
     MdProgressBarModule,
+    MdCardModule,
     ApiHttpModule,
     AuthModule,
     CustomDirectivesModule

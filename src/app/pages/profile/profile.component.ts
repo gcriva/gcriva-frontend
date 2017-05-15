@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 import { MdSnackBar } from '@angular/material';
 import { AppState } from '../../app.service';
@@ -22,10 +21,8 @@ export class ProfileComponent implements OnInit {
   public password: Password = {};
 
   constructor(
-    public route: ActivatedRoute,
     public http: AuthHttp,
     public snackBar: MdSnackBar,
-    private router: Router,
     private appState: AppState
   ) {}
 
@@ -39,7 +36,7 @@ export class ProfileComponent implements OnInit {
     this.http.post('/account', { user: this.user })
       .map((res) => res.json())
       .subscribe((data) => {
-        this.appState.state.user = data.user;
+        this.appState.set('user', data.user);
         localStorage.setItem('token', data.token);
         this.openSnackBar('Informações salvas com sucesso!!', 'OK');
       }, handleErrorResponse(this.snackBar));
@@ -69,7 +66,10 @@ export class ProfileComponent implements OnInit {
       this.http.post('/account/image', formData)
         .map((res) => res.json())
         .subscribe((data) => {
-          this.appState.state.user = { ...this.appState.state.user, picture: data.picture };
+          this.appState.set('user', {
+            ...this.appState.state.user,
+            picture: data.picture
+          });
           (<any> this.user).picture = data.picture;
           localStorage.setItem('token', data.token);
           this.openSnackBar('Foto de perfil alterada com sucesso!', 'OK');
@@ -79,7 +79,7 @@ export class ProfileComponent implements OnInit {
 
   public openSnackBar(message: string, action?: string) {
     this.snackBar.open(message, action, {
-      duration: 50000,
+      duration: 2000,
     });
   }
 }

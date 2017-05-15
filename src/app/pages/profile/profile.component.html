@@ -1,4 +1,4 @@
-<section class="profile section">
+<section class="profile section main-section">
   <h4>Informações da conta</h4>
   <div class="picture-wrapper">
     <img class="picture" [src]="user.picture" />
@@ -37,7 +37,7 @@
     </button>
   </form>
 </section>
-<section class="section">
+<section class="section main-section">
   <h4>Alteração de senha</h4>
   <form (ngSubmit)="updatePassword(passwordForm)" #passwordForm="ngForm">
     <md-input-container class="full-width">
