@@ -24,7 +24,14 @@ a.active {
 
 .mat-simple-snackbar {
   align-items: center;
+  justify-content: space-between;
   line-height: 1 !important;
+  width: 100%;
+}
+
+snack-bar-container {
+  display: flex !important;
+  align-items: center;
 }
 
 .mat-simple-snackbar-message {
@@ -36,4 +43,11 @@ a.active {
 .mat-simple-snackbar-action {
   margin-top: auto !important;
   margin-bottom: auto !important;
+}
+
+.main-section {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 10px;
+  position: relative;
 }

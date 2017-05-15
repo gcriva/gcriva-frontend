@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       .map((res) => res.json())
       .subscribe((data) => {
           localStorage.setItem('token', data.token);
-          this.router.navigate(['default']);
+          this.router.navigateByUrl('/home');
 
           this.appState.set('user', jwtHelper.decodeToken(data.token));
       }, (error) => {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     }
 
     if (!tokenIsExpired) {
-      this.router.navigateByUrl('/default');
+      this.router.navigateByUrl('/home');
     }
   }
 

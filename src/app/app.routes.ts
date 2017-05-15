@@ -9,22 +9,23 @@ import { ForgotComponent } from './pages/forgot';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
 import { MenuComponent } from './pages/menu';
+import { UsersComponent } from './pages/users';
 
 import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
 
 const SECURE_ROUTES: Routes = [
-  { path: 'profile', component: ProfileComponent},
-  { path: 'home',  component: DefaultComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'detail', loadChildren: './+detail#DetailModule'},
-  { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
-  { path: 'login', component: LoginComponent },
-  { path: 'default', component: DefaultComponent}
+  { path: 'perfil', component: ProfileComponent },
+  { path: 'home',  component: DefaultComponent, data: { name: 'Gestão Gcriva' } },
+  { path: 'usuarios',  component: UsersComponent, data: { name: 'Usuários', role: 'admin' } },
+  { path: 'about', component: AboutComponent },
+  { path: 'detail', loadChildren: './+detail#DetailModule' },
+  { path: 'barrel', loadChildren: './+barrel#BarrelModule' }
 ];
 
 export const ROUTES: Routes = [
   { path: '',  component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'forgot', component: ForgotComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: '', component: MenuComponent, canActivate: [AuthGuard], children: SECURE_ROUTES },
