@@ -59,6 +59,24 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  public uploadNewPicture(event) {
+    const [file] = event.srcElement.files;
+    if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg') {
+      this.openSnackBar('Favor selecionar uma imagem que tenha o formato JPG ou PNG', 'OK');
+    } else {
+      const formData = new FormData();
+      formData.append('picture', file);
+      this.http.post('/account/image', formData)
+        .map((res) => res.json())
+        .subscribe((data) => {
+          this.appState.state.user = { ...this.appState.state.user, picture: data.picture };
+          (<any> this.user).picture = data.picture;
+          localStorage.setItem('token', data.token);
+          this.openSnackBar('Foto de perfil alterada com sucesso!', 'OK');
+        }, handleErrorResponse(this.snackBar));
+    }
+  }
+
   public openSnackBar(message: string, action?: string) {
     this.snackBar.open(message, action, {
       duration: 50000,

@@ -13,7 +13,7 @@
   <md-sidenav #sidenav class="sidenav">
     <div class="profile-area">
       <div class="picture-wrapper">
-        <img class="picture" [src]="picture()" />
+        <img class="picture" [src]="appState.state.user.picture || defaultPictureUrl" />
         <button md-icon-button [mdMenuTriggerFor]="menu" class="user-menu">
           <md-icon>more_vert</md-icon>
         </button>

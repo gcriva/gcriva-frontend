@@ -13,6 +13,8 @@ const defaultPictureUrl =
   templateUrl: './menu.components.html'
 })
 export class MenuComponent {
+  public defaultPictureUrl: String = defaultPictureUrl;
+
   constructor(
     public route: ActivatedRoute,
     private router: Router,
@@ -29,12 +31,6 @@ export class MenuComponent {
 
   public tostudents() {
     console.log('to students');
-  }
-
-  public picture() {
-    const user = this.appState.state.user || {};
-
-    return user.picture ? user.picture : defaultPictureUrl;
   }
 
   public user() {

@@ -9,7 +9,7 @@
   h4 {
     color: $gray;
     font-weight: normal;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     margin-bottom: 25px;
     margin-top: 10px;
   }
@@ -27,8 +27,51 @@
   width: 100%;
 }
 
-.picture {
+.picture-wrapper {
   height: 100px;
   margin-bottom: 20px;
+  position: relative;
   width: 100px;
+
+  .picture {
+    height: 100px;
+    width: 100px;
+  }
+
+  .input-wrapper {
+    align-items: center;
+    background-color: rgba(140, 140, 140, .85);
+    border: 0;
+    border-radius: 50%;
+    bottom: 0;
+    color: rgba(255, 255, 255, .6);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+
+    span {
+      text-align: center;
+      width: 100%;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .hidden-input {
+    @extend .input-wrapper;
+
+    opacity: 0 !important;
+  }
 }

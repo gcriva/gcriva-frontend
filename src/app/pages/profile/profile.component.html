@@ -1,6 +1,13 @@
 <section class="profile section">
   <h4>Informações da conta</h4>
-  <img class="picture" id="blauss" [src]="user.picture" />
+  <div class="picture-wrapper">
+    <img class="picture" [src]="user.picture" />
+    <div class="input-wrapper">
+      <md-icon>photo_camera</md-icon>
+      <span>Alterar foto</span>
+      <input type="file" class="hidden-input" accept="image/jpg,image/png" (change)="uploadNewPicture($event)" multiple="false" />
+    </div>
+  </div>
   <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
     <md-input-container class="full-width">
       <input mdInput name="name" type="email" placeholder="Nome" [(ngModel)]="user.name" #name="ngModel" required>
