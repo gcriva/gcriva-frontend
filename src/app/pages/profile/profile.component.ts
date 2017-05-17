@@ -6,9 +6,9 @@ import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 
 interface Password {
-  currentPassword?: String;
-  password?: String;
-  confirmPassword?: String;
+  currentPassword?: string;
+  password?: string;
+  confirmPassword?: string;
 }
 
 @Component({

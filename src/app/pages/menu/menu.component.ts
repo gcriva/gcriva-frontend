@@ -13,7 +13,7 @@ const defaultPictureUrl =
   templateUrl: './menu.components.html'
 })
 export class MenuComponent implements OnInit {
-  public defaultPictureUrl: String = defaultPictureUrl;
+  public defaultPictureUrl: string = defaultPictureUrl;
   @ViewChild('sidenav') public sidenav: MdSidenav;
 
   constructor(
