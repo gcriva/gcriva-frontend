@@ -10,6 +10,7 @@ import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
 import { MenuComponent } from './pages/menu';
 import { UsersComponent } from './pages/users';
+import { BeneficiariesComponent } from './pages/beneficiaries';
 
 import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
@@ -18,6 +19,7 @@ const SECURE_ROUTES: Routes = [
   { path: 'perfil', component: ProfileComponent },
   { path: 'home',  component: DefaultComponent, data: { name: 'Gestão Gcriva' } },
   { path: 'usuarios',  component: UsersComponent, data: { name: 'Usuários', role: 'admin' } },
+  { path: 'beneficiarios',  component: BeneficiariesComponent, data: { name: 'Beneficiarios' } },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule' },
   { path: 'barrel', loadChildren: './+barrel#BarrelModule' }

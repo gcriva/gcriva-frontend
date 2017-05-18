@@ -1,0 +1,12 @@
+<div class="main-section">
+  <md-card class="person-card" *ngFor="let person of appState.state.beneficiaries">
+    <md-card-header>
+      <md-card-title>{{person.name}}</md-card-title>
+      <md-card-subtitle>{{person.email}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-actions>
+      <button color="primary" md-button>Editar</button>
+      <button color="warn" md-button (click)="openDialogDelete(person)">Deletar</button>
+    </md-card-actions>
+  </md-card>
+</div>

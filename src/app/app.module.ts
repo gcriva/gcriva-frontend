@@ -46,7 +46,8 @@ import { MdButtonModule,
   MdListModule,
   MdMenuModule,
   MdProgressBarModule,
-  MdCardModule
+  MdCardModule,
+  MdDialogModule
 } from '@angular/material';
 
 // pages
@@ -59,6 +60,8 @@ import { MenuComponent } from './pages/menu';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
 import { UsersComponent } from './pages/users';
+import { BeneficiariesComponent } from './pages/beneficiaries';
+import { DialogDeleteComponent } from './pages/beneficiaries/dialog.delete';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -93,8 +96,11 @@ type StoreType = {
     ForgotComponent,
     DefaultComponent,
     ProfileComponent,
-    UsersComponent
+    UsersComponent,
+    BeneficiariesComponent,
+    DialogDeleteComponent
   ],
+  entryComponents: [DialogDeleteComponent],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
@@ -115,7 +121,8 @@ type StoreType = {
     MdCardModule,
     ApiHttpModule,
     AuthModule,
-    CustomDirectivesModule
+    CustomDirectivesModule,
+    MdDialogModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
