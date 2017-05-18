@@ -11,6 +11,8 @@ import { handleErrorResponse } from '../../utils';
   templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
+  public userToClose?: string = null;
+
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
@@ -27,6 +29,26 @@ export class UsersComponent implements OnInit {
 
   public pictureUrl(user) {
     return `url(${user.picture || this.appState.state.defaultPictureUrl})`;
+  }
+
+  public openDeleteDialog(userId: string) {
+    this.userToClose = userId;
+  }
+
+  public dismissDeleteConfirm() {
+    this.userToClose = null;
+  }
+
+  public deleteUser() {
+    this.http.delete('/users/delete', { body: { id: this.userToClose } })
+      .map((res) => res.json())
+      .finally(() => {
+        this.userToClose = null;
+      })
+      .subscribe((data) => {
+        this.openSnackBar('Usuário deletado com sucesso!');
+        this.ngOnInit();
+      }, handleErrorResponse(this.snackBar));
   }
 
   public openSnackBar(message: string, action?: string) {
