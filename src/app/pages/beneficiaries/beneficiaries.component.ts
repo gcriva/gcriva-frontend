@@ -14,13 +14,13 @@ import { DialogDeleteComponent } from './dialog.delete';
   templateUrl: './beneficiaries.components.html'
 })
 export class BeneficiariesComponent implements OnInit {
+  public currentPerson: any = {};
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
     private appState: AppState,
     public dialog: MdDialog
   ) {}
-  currentPerson: any = {};
 
   public ngOnInit() {
     this.http.get('/beneficiaries')
@@ -48,7 +48,7 @@ export class BeneficiariesComponent implements OnInit {
     this.currentPerson = person;
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe((result) => {
-      if(result) {
+      if (result) {
         this.delete(this.currentPerson);
       }
     });
