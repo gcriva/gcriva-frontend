@@ -1,0 +1,63 @@
+<section class="profile section main-section">
+  <form (ngSubmit)="createUser()" #userForm="ngForm">
+    <md-input-container class="full-width">
+      <input mdInput name="name" type="text" placeholder="Nome" [(ngModel)]="user.name" #name="ngModel" required>
+      <md-error>Campo obrigatório</md-error>
+    </md-input-container>
+    <md-input-container class="full-width">
+      <input
+        mdInput
+        scrollIntoView
+        name="email"
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="user.email"
+        #name="ngModel"
+        required
+        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+      >
+      <md-error>{{name.value && !name.valid ? 'Campo deve ser do tipo email' : 'Campo obrigatório'}}</md-error>
+    </md-input-container>
+    <md-input-container class="full-width">
+      <input
+        mdInput
+        scrollIntoView
+        name="password"
+        type="password"
+        placeholder="Senha"
+        [(ngModel)]="user.password"
+        #password="ngModel"
+        required
+        minlength="4"
+      >
+      <md-error>{{password.value && password.value.length < 4 ? 'Senha deve ter no mínimo 4 caracteres' : 'Campo obrigatório'}}</md-error>
+    </md-input-container>
+    <md-input-container class="full-width">
+      <input
+        mdInput
+        scrollIntoView
+        name="confirmPassword"
+        type="password"
+        placeholder="Confirmação da senha"
+        [(ngModel)]="user.confirmPassword"
+        #confirmPassword="ngModel"
+        required
+        minlength="4"
+      >
+      <md-error>{{confirmPassword.value && confirmPassword.value.length < 4 ? 'Confirmação de senha deve ter no mínimo 4 caracteres' : 'Campo obrigatório'}}</md-error>
+    </md-input-container>
+    <label for="roles">Tipos de usuário</label>
+    <section class="roles-section">
+      <md-checkbox name="adminRole" class="role" [(ngModel)]="roles.admin">Administrador</md-checkbox>
+      <md-checkbox name="commonRole" class="role" [(ngModel)]="roles.common">Comum</md-checkbox>
+    </section>
+    <button
+      md-fab
+      color="primary"
+      type="submit"
+      [disabled]="!userForm.form.valid"
+    >
+      <md-icon>save</md-icon>
+    </button>
+  </form>
+</section>

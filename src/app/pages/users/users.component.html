@@ -10,7 +10,6 @@
       <md-card-subtitle>{{user.email}}</md-card-subtitle>
     </md-card-header>
     <md-card-actions>
-      <button color="primary" md-button>Editar</button>
       <button color="warn" md-button (click)="openDeleteDialog(user.id)">Deletar</button>
     </md-card-actions>
     <div class="delete-confirm" *ngIf="userToClose === user.id" (click)="openDeleteDialog(user.id)">
@@ -22,3 +21,6 @@
     </div>
   </md-card>
 </div>
+<button color="primary" md-fab (click)="redirectToNew()">
+  <md-icon>add</md-icon>
+</button>

@@ -22,16 +22,15 @@ a.active {
     background-color: #aba7a7;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .mat-simple-snackbar {
   align-items: center;
   justify-content: space-between;
   line-height: 1 !important;
   width: 100%;
-}
-
-snack-bar-container {
-  display: flex !important;
-  align-items: center;
 }
 
 .mat-simple-snackbar-message {
@@ -48,6 +47,19 @@ snack-bar-container {
 .main-section {
   margin: 0 auto;
   max-width: 700px;
-  padding: 10px;
+  padding: 20px 10px 20px;
   position: relative;
+}
+
+.mat-fab {
+  position: fixed !important;
+  right: 24px;
+  bottom: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .mat-fab {
+    right: 16px;
+    bottom: 16px;
+  }
 }

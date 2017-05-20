@@ -17,7 +17,7 @@ interface Password {
   templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
-  public user: Object = {};
+  public user: object = {};
   public password: Password = {};
 
   constructor(

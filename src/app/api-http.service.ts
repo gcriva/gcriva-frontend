@@ -42,7 +42,7 @@ export class ApiHttp extends Http {
         this.startLoading();
       }
     }
-    , 200);
+    , 250);
 
     return super.request(finalUrl, options).finally(() => {
       isDone = true;

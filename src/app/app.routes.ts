@@ -9,7 +9,7 @@ import { ForgotComponent } from './pages/forgot';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
 import { MenuComponent } from './pages/menu';
-import { UsersComponent } from './pages/users';
+import { UsersComponent, NewUserComponent } from './pages/users';
 
 import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
@@ -18,6 +18,11 @@ const SECURE_ROUTES: Routes = [
   { path: 'perfil', component: ProfileComponent },
   { path: 'home',  component: DefaultComponent, data: { name: 'Gestão Gcriva' } },
   { path: 'usuarios',  component: UsersComponent, data: { name: 'Usuários', role: 'admin' } },
+  {
+    path: 'usuarios/novo',
+    component: NewUserComponent,
+    data: { name: 'Novo usuário', role: 'admin' }
+  },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule' },
   { path: 'barrel', loadChildren: './+barrel#BarrelModule' }

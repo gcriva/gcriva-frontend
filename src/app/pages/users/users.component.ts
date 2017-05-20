@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthHttp } from 'angular2-jwt';
 import { MdSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 
@@ -16,7 +17,8 @@ export class UsersComponent implements OnInit {
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
-    private appState: AppState
+    private appState: AppState,
+    private router: Router,
   ) {}
 
   public ngOnInit() {
@@ -49,6 +51,10 @@ export class UsersComponent implements OnInit {
         this.openSnackBar('Usuário deletado com sucesso!');
         this.ngOnInit();
       }, handleErrorResponse(this.snackBar));
+  }
+
+  public redirectToNew() {
+    this.router.navigateByUrl('/usuarios/novo');
   }
 
   public openSnackBar(message: string, action?: string) {
