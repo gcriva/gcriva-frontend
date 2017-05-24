@@ -48,7 +48,8 @@ import { MdButtonModule,
   MdProgressBarModule,
   MdCardModule,
   MdDialogModule,
-  MdAutocompleteModule
+  MdAutocompleteModule,
+  MdButtonToggleModule,
 } from '@angular/material';
 
 // pages
@@ -60,7 +61,7 @@ import { ForgotComponent } from './pages/forgot';
 import { MenuComponent } from './pages/menu';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
-import { UsersComponent } from './pages/users';
+import { UsersComponent, NewUserComponent } from './pages/users';
 import { BeneficiariesComponent } from './pages/beneficiaries';
 import { DialogDeleteComponent } from './pages/beneficiaries/dialog.delete';
 import { EditBeneficiariesComponent } from './pages/beneficiaries-edit';
@@ -101,7 +102,8 @@ type StoreType = {
     UsersComponent,
     BeneficiariesComponent,
     DialogDeleteComponent,
-    EditBeneficiariesComponent
+    EditBeneficiariesComponent,
+    NewUserComponent
   ],
   entryComponents: [DialogDeleteComponent],
   imports: [ // import Angular's modules
@@ -122,6 +124,7 @@ type StoreType = {
     MdMenuModule,
     MdProgressBarModule,
     MdCardModule,
+    MdButtonToggleModule,
     ApiHttpModule,
     AuthModule,
     CustomDirectivesModule,

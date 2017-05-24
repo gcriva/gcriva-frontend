@@ -10,7 +10,7 @@
   </div>
   <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
     <md-input-container class="full-width">
-      <input mdInput name="name" type="email" placeholder="Nome" [(ngModel)]="user.name" #name="ngModel" required>
+      <input mdInput name="name" type="text" placeholder="Nome" [(ngModel)]="user.name" #name="ngModel" required>
       <md-error>Campo é obrigatório</md-error>
     </md-input-container>
     <md-input-container class="full-width">

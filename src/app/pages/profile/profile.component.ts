@@ -6,9 +6,9 @@ import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 
 interface Password {
-  currentPassword?: String;
-  password?: String;
-  confirmPassword?: String;
+  currentPassword?: string;
+  password?: string;
+  confirmPassword?: string;
 }
 
 @Component({
@@ -17,7 +17,7 @@ interface Password {
   templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
-  public user: Object = {};
+  public user: object = {};
   public password: Password = {};
 
   constructor(
