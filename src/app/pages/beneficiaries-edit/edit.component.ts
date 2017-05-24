@@ -5,6 +5,7 @@ import { MdSnackBar } from '@angular/material';
 import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 import {FormControl} from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as jsonBrasil from '../../json/cities.json'
 
@@ -24,17 +25,28 @@ export class EditBeneficiariesComponent {
 	constructor(
 		public http: AuthHttp,
 		public snackBar: MdSnackBar,
-		private appState: AppState
+		private appState: AppState,
+		private router: Router,
+		private route: ActivatedRoute
 	) {
 		this.stateCtrl = new FormControl();
 		this.states = jsonBrasil.estados;
 		this.filteredStates = this.stateCtrl.valueChanges
 			.startWith(null)
 			.map(name => this.filterStates(name));
+
+		this.route.params.subscribe(params => {
+			this.editObjt = this.appState.state.beneficiaries.filter((beneficiarie) => {
+				return beneficiarie.id == params['id'];
+			})[0];
+		});
 	}
 
 	public save() {
-		console.log('save');
+		this.http.post('/beneficiaries', this.editObjt)
+			.subscribe((data) => {
+				this.router.navigate(['beneficiarios']).then(_ => {});
+			}, handleErrorResponse(this.snackBar));
 	}
 
 	public filterStates(val: string) {
