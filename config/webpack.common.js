@@ -27,8 +27,8 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Gcriva',
-  baseUrl: '/',
+  title: 'Gestão Gcriva',
+  baseUrl: '',
   isDevServer: helpers.isWebpackDevServer()
 };
 
