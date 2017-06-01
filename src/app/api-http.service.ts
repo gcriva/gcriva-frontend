@@ -21,7 +21,7 @@ export class ApiHttp extends Http {
     super(backend, defaultOptions);
 
     this.baseUrl = process.env.NODE_ENV === 'production'
-      ? 'https://gcriva.herokuapp.com'
+      ? 'https://gestaogcriva.azurewebsites.net/'
       : process.env.API_URL || 'http://localhost:4000';
   }
 
