@@ -67,3 +67,8 @@ a.active {
     bottom: 16px;
   }
 }
+
+/* Remove transform from sidenav-content to make fixed elements relative to viewport again */
+.mat-sidenav-content {
+  transform: none !important;
+}
