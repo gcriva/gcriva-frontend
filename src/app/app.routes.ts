@@ -60,9 +60,14 @@ const SECURE_ROUTES: Routes = [
     data: { name: 'Projetos' }
   },
   {
+    path: 'projetos/new',
+    component: EditProjectsComponent,
+    data: { name: 'Criar novo Projeto' }
+  },
+  {
     path: 'projetos/:id',
     component: EditProjectsComponent,
-    data: { name: 'Edição de Projetos' }
+    data: { name: 'Editar projeto' }
   },
   {
     path: 'cursos',

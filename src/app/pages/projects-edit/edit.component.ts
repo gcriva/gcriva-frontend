@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
   templateUrl: './edit.components.html'
 })
 export class EditProjectsComponent {
-  public editObjt: any = {};
+  public project: any = {};
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
@@ -24,22 +24,29 @@ export class EditProjectsComponent {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
-      this.editObjt = this.appState.state.projects.filter((project) => {
-        return project.id === params['id'];
-      })[0];
+      if (params.id) {
+        this.http.get(`/projects/${params.id}`)
+          .map((res) => res.json())
+          .subscribe(
+            (data) => {
+              this.project = data.project;
+            },
+            handleErrorResponse(this.snackBar)
+          );
+      }
     });
   }
 
   public save() {
-    if (this.editObjt.id) {
-      this.http.put('/projects/' + this.editObjt.id, { project: this.editObjt })
+    if (this.project.id) {
+      this.http.put('/projects/' + this.project.id, { project: this.project })
         .subscribe((data) => {
             this.router.navigate(['projetos']);
           },
           handleErrorResponse(this.snackBar)
         );
     } else {
-      this.http.post('/projects', { project: this.editObjt })
+      this.http.post('/projects', { project: this.project })
         .subscribe((data) => {
             this.router.navigate(['projetos']);
           },

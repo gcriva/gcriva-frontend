@@ -6,9 +6,16 @@
     </md-card-header>
     <md-card-actions>
       <button color="primary" routerLink="/projetos/{{project.id}}" md-button>Editar</button>
-      <button color="warn" md-button (click)="openDialogDelete(project)">Deletar</button>
+      <button color="warn" md-button (click)="openDeleteDialog(project.id)">Deletar</button>
     </md-card-actions>
+    <div class="delete-confirm" *ngIf="projectToDelete === project.id" (click)="openDeleteDialog(project.id)">
+      <em>Tem certeza?</em>
+      <div class="close-actions-wrapper">
+        <button md-button (click)="dismissDeleteConfirm()">Não</button>
+        <button color="warn" md-button (click)="delete(project.id)">Sim</button>
+      </div>
+    </div>
   </md-card>
 </div>
 
-<a class="button-float" md-fab routerLink="/projetos/new"><md-icon>add</md-icon></a>
+<a md-fab routerLink="/projetos/new"><md-icon>add</md-icon></a>

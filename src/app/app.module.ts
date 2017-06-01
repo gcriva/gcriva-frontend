@@ -50,6 +50,8 @@ import { MdButtonModule,
   MdDialogModule,
   MdAutocompleteModule,
   MdButtonToggleModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
 } from '@angular/material';
 
 // pages
@@ -133,6 +135,8 @@ type StoreType = {
     MdProgressBarModule,
     MdCardModule,
     MdButtonToggleModule,
+    MdNativeDateModule,
+    MdDatepickerModule,
     ApiHttpModule,
     AuthModule,
     CustomDirectivesModule,

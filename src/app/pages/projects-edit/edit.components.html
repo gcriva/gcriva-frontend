@@ -1,14 +1,32 @@
 <div class="main-section">
-	<form name="update-form">
-		<md-grid-list cols="1" rowHeight="90px">
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-name" [(ngModel)]="editObjt.name" placeholder="Nome">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile class="input">
-				<button md-raised-button type="submit" (click)="save()">Salvar</button>
-			</md-grid-tile>
-		</md-grid-list>
+	<form (ngSubmit)="save()" #updateForm="ngForm">
+			<md-input-container class="full-width">
+				<input mdInput type="text" name="edit-name" [(ngModel)]="project.name" placeholder="Nome" #name="ngModel" required>
+				<md-error>Campo obrigatório</md-error>
+			</md-input-container>
+			<md-input-container class="full-width">
+				<input mdInput name="name" type="text" placeholder="Nome do patrocinador" [(ngModel)]="project.sponsorName" #sponsorName="ngModel" required>
+				<md-error>Campo obrigatório</md-error>
+			</md-input-container>
+			<md-input-container>
+				<input name="startDate" mdInput [mdDatepicker]="startDatePicker" placeholder="Date de início" [(ngModel)]="project.startDate" #startDate="ngModel" required>
+				<button mdSuffix [mdDatepickerToggle]="startDatePicker"></button>
+				<md-datepicker #startDatePicker></md-datepicker>
+				<md-error>Campo obrigatório</md-error>
+			</md-input-container>
+			<md-input-container>
+				<input name="endDate" mdInput [mdDatepicker]="endDatePicker" placeholder="Date de término" [(ngModel)]="project.endDate" #endDate="ngModel">
+				<button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
+				<md-datepicker #endDatePicker></md-datepicker>
+			</md-input-container>
+			<button
+				color="primary"
+				md-fab
+				type="submit"
+				[disabled]="!updateForm.form.valid"
+				style="display: block"
+			>
+				<md-icon>save</md-icon>
+			</button>
 	</form>
 </div>

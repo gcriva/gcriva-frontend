@@ -4,9 +4,6 @@ import { AuthHttp } from 'angular2-jwt';
 import { MdSnackBar } from '@angular/material';
 import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
-import { MdDialog, MdDialogRef } from '@angular/material';
-
-import { DialogDeleteComponent } from './projects.delete';
 
 @Component({
   selector: 'projects',
@@ -15,11 +12,12 @@ import { DialogDeleteComponent } from './projects.delete';
 })
 export class ProjectsComponent implements OnInit {
   public currentProject: any = {};
+  public projectToDelete: string = null;
+
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
-    private appState: AppState,
-    public dialog: MdDialog
+    private appState: AppState
   ) {}
 
   public ngOnInit() {
@@ -36,21 +34,20 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  public delete(project) {
-    this.http.delete('/projects/' + project.id)
+  public delete(projectId) {
+    this.http.delete(`/projects/${projectId}`)
       .map((res) => res.json())
       .subscribe((data) => {
+        this.openSnackBar('Projeto excluído com sucesso');
         this.ngOnInit();
       }, handleErrorResponse(this.snackBar));
   }
 
-  public openDialogDelete(project) {
-    this.currentProject = project;
-    let dialogRef = this.dialog.open(DialogDeleteComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.delete(this.currentProject);
-      }
-    });
+  public openDeleteDialog(projectId: string) {
+    this.projectToDelete = projectId;
+  }
+
+  public dismissDeleteConfirm() {
+    this.projectToDelete = null;
   }
 }
