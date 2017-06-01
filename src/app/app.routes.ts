@@ -12,6 +12,10 @@ import { MenuComponent } from './pages/menu';
 import { UsersComponent, NewUserComponent } from './pages/users';
 import { BeneficiariesComponent } from './pages/beneficiaries';
 import { EditBeneficiariesComponent } from './pages/beneficiaries-edit';
+import { ProjectsComponent } from './pages/projects';
+import { EditProjectsComponent } from './pages/projects-edit';
+import { CoursesComponent } from './pages/courses';
+import { EditCoursesComponent } from './pages/courses-edit';
 
 import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
@@ -49,6 +53,26 @@ const SECURE_ROUTES: Routes = [
     path: 'usuarios/novo',
     component: NewUserComponent,
     data: { name: 'Novo usuário', role: 'admin' }
+  },
+  {
+    path: 'projetos',
+    component: ProjectsComponent,
+    data: { name: 'Projetos' }
+  },
+  {
+    path: 'projetos/:id',
+    component: EditProjectsComponent,
+    data: { name: 'Edição de Projetos' }
+  },
+  {
+    path: 'cursos',
+    component: CoursesComponent,
+    data: { name: 'Cursos' }
+  },
+  {
+    path: 'cursos/:id',
+    component: EditCoursesComponent,
+    data: { name: 'Edição de Cursos' }
   }
 ];
 

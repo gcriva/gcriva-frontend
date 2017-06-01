@@ -1,0 +1,14 @@
+<div class="main-section">
+  <md-card class="person-card" *ngFor="let project of appState.state.projects">
+    <md-card-header>
+      <md-card-title>{{project.name}}</md-card-title>
+      <md-card-subtitle>{{project.startDate | date: 'dd/MM/yyyy' }}</md-card-subtitle>
+    </md-card-header>
+    <md-card-actions>
+      <button color="primary" routerLink="/projetos/{{project.id}}" md-button>Editar</button>
+      <button color="warn" md-button (click)="openDialogDelete(project)">Deletar</button>
+    </md-card-actions>
+  </md-card>
+</div>
+
+<a class="button-float" md-fab routerLink="/projetos/new"><md-icon>add</md-icon></a>

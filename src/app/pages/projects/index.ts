@@ -1,1 +1,1 @@
-export * from './beneficiaries.component';
+export * from './projects.component';

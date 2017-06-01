@@ -6,15 +6,15 @@ import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
-import { DialogDeleteComponent } from './dialog.delete';
+import { DialogDeleteComponent } from './projects.delete';
 
 @Component({
-  selector: 'beneficiaries',
-  styleUrls: ['./beneficiaries-components.scss'],
-  templateUrl: './beneficiaries.components.html'
+  selector: 'projects',
+  styleUrls: ['./projects-components.scss'],
+  templateUrl: './projects.components.html'
 })
-export class BeneficiariesComponent implements OnInit {
-  public currentPerson: any = {};
+export class ProjectsComponent implements OnInit {
+  public currentProject: any = {};
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
@@ -23,10 +23,10 @@ export class BeneficiariesComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.http.get('/beneficiaries')
+    this.http.get('/projects')
       .map((res) => res.json())
       .subscribe((data) => {
-        this.appState.set('beneficiaries', data.beneficiaries);
+        this.appState.set('projects', data.projects);
       }, handleErrorResponse(this.snackBar));
   }
 
@@ -36,20 +36,20 @@ export class BeneficiariesComponent implements OnInit {
     });
   }
 
-  public delete(person) {
-    this.http.delete('/beneficiaries/' + person.id)
+  public delete(project) {
+    this.http.delete('/projects/' + project.id)
       .map((res) => res.json())
       .subscribe((data) => {
         this.ngOnInit();
       }, handleErrorResponse(this.snackBar));
   }
 
-  public openDialogDelete(person) {
-    this.currentPerson = person;
+  public openDialogDelete(project) {
+    this.currentProject = project;
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.delete(this.currentPerson);
+        this.delete(this.currentProject);
       }
     });
   }

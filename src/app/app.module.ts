@@ -65,6 +65,10 @@ import { UsersComponent, NewUserComponent } from './pages/users';
 import { BeneficiariesComponent } from './pages/beneficiaries';
 import { DialogDeleteComponent } from './pages/beneficiaries/dialog.delete';
 import { EditBeneficiariesComponent } from './pages/beneficiaries-edit';
+import { ProjectsComponent } from './pages/projects';
+import { EditProjectsComponent } from './pages/projects-edit';
+import { CoursesComponent } from './pages/courses';
+import { EditCoursesComponent } from './pages/courses-edit';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -103,7 +107,11 @@ type StoreType = {
     BeneficiariesComponent,
     DialogDeleteComponent,
     EditBeneficiariesComponent,
-    NewUserComponent
+    NewUserComponent,
+    ProjectsComponent,
+    EditProjectsComponent,
+    CoursesComponent,
+    EditCoursesComponent
   ],
   entryComponents: [DialogDeleteComponent],
   imports: [ // import Angular's modules
