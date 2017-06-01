@@ -49,7 +49,7 @@ export class MenuComponent implements OnInit {
   }
 
   public logout() {
-    localStorage.setItem('token', null);
+    localStorage.removeItem('token');
     this.router.navigate(['login']);
   }
 
