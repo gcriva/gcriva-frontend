@@ -48,10 +48,10 @@
 			</md-grid-tile>
 			<md-grid-tile>
 				<md-input-container class="example-half-width">
-					<input mdInput placeholder="Estado" [mdAutocomplete]="auto">
+					<input mdInput placeholder="Estado" [mdAutocomplete]="auto" name="edit-state" [(ngModel)]="editObjt.state" (keyup)="filterS()">
 				</md-input-container>
-				<md-autocomplete #auto="mdAutocomplete" class="example-half-width" name="edit-state" [(ngModel)]="editObjt.state">
-					<md-option *ngFor="let state of filteredStates | async" [value]="state.sigla">{{ state.nome }}</md-option>
+				<md-autocomplete #auto="mdAutocomplete" class="example-half-width" name="state-auto-complete">
+					<md-option *ngFor="let state of filteredStates | async" [value]="state.nome">{{ state.nome }}</md-option>
 				</md-autocomplete>
 			</md-grid-tile>
 			<md-grid-tile class="input">
