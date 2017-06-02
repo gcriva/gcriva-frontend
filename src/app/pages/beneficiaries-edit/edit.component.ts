@@ -18,9 +18,10 @@ import 'rxjs/add/operator/map';
 })
 export class EditBeneficiariesComponent {
 	public editObjt: any = {};
-	public stateCtrl: FormControl;
-	public filteredStates: any;
 	public states: any[] = [];
+	public cities: any[] = [];
+	public filteredCities: any;
+	public citieCtrl: FormControl;
 	constructor(
 		public http: AuthHttp,
 		public snackBar: MdSnackBar,
@@ -28,31 +29,60 @@ export class EditBeneficiariesComponent {
 		private router: Router,
 		private route: ActivatedRoute
 	) {
-		this.stateCtrl = new FormControl();
 		this.states = jsonBrasil.estados;
-		this.filterS();
 
 		this.route.params.subscribe((params) => {
-			this.editObjt = this.appState.state.beneficiaries.filter((beneficiarie) => {
-				return beneficiarie.id === params['id'];
-			})[0];
+			if(params.id) {
+				this.http.get(`/beneficiaries/${params.id}`)
+				.map((res) => res.json())
+				.subscribe(
+					(data) => {
+						this.editObjt = data.beneficiary;
+						this.citieCtrl.setValue(this.editObjt.city);
+						this.filterStates();
+					},
+					handleErrorResponse(this.snackBar)
+				);
+			}
 		});
-	}
 
-	public filterS() {
-		// this.filteredStates = this.states.filter((state) => { return state.nome.indexOf(this.editObjt.state) > -1 });
+		this.citieCtrl = new FormControl();
+		this.filteredCities = this.citieCtrl.valueChanges
+			.startWith(null)
+			.map(name => this.filter(name))
+			.debounceTime(200);
 	}
 
 	public save() {
-		this.http.post('/beneficiaries', this.editObjt)
-			.subscribe((data) => {
-					this.router.navigate(['beneficiarios']);
-				},
-				handleErrorResponse(this.snackBar)
-			);
+		this.editObjt.city = this.citieCtrl.value;
+		if (this.editObjt.id) {
+			this.http.put('/beneficiaries/' + this.editObjt.id, { beneficiary: this.editObjt })
+				.subscribe((data) => {
+						this.router.navigate(['beneficiarios']);
+					},
+					handleErrorResponse(this.snackBar)
+				);
+		} else {
+			this.http.post('/beneficiaries', { beneficiary: this.editObjt})
+				.subscribe((data) => {
+						this.router.navigate(['beneficiarios']);
+					},
+					handleErrorResponse(this.snackBar)
+				);
+		}
 	}
 
-	public filterStates(val: string) {
-		return val ? this.states.filter((s) => new RegExp(`^${val}`, 'gi').test(s)) : this.states;
+	public filterStates() {
+		let filteredStates = this.states.filter( (state) => {
+			return state.nome == this.editObjt.state;
+		});
+		if(filteredStates.length > 0) {
+			this.cities = filteredStates[0].cidades;
+		}
+	}
+
+	public filter(val: string) {
+		return val ? this.cities.filter(s => new RegExp(`^${val}`, 'gi').test(s))
+					: this.cities;
 	}
 }

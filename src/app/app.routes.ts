@@ -36,6 +36,10 @@ const SECURE_ROUTES: Routes = [
     component: BeneficiariesComponent,
     data: { name: 'Beneficiarios' }
   },
+  { path: 'beneficiarios/new',
+    component: EditBeneficiariesComponent,
+    data: { name: 'Edição de Beneficiarios' }
+  },
   { path: 'beneficiarios/:id',
     component: EditBeneficiariesComponent,
     data: { name: 'Edição de Beneficiarios' }

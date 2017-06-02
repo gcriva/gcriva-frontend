@@ -26,7 +26,7 @@ export class CoursesComponent implements OnInit {
     this.http.get('/courses')
       .map((res) => res.json())
       .subscribe((data) => {
-        this.appState.set('courses', data.course);
+        this.appState.set('courses', data.courses);
       }, handleErrorResponse(this.snackBar));
   }
 

@@ -6,11 +6,11 @@
 					<input mdInput type="text" name="edit-name" [(ngModel)]="editObjt.name" placeholder="Nome">
 				</md-input-container>
 			</md-grid-tile>
-			<md-grid-tile>
+			<!--<md-grid-tile>
 				<md-input-container class="example-full-width">
 					<input mdInput type="email" name="edit-email" [(ngModel)]="editObjt.email" placeholder="Email">
 				</md-input-container>
-			</md-grid-tile>
+			</md-grid-tile>-->
 			<md-grid-tile>
 				<md-input-container class="example-full-width">
 					<input mdInput type="text" name="edit-motherName" [(ngModel)]="editObjt.motherName" placeholder="Nome da mãe">
@@ -38,7 +38,9 @@
 			</md-grid-tile>
 			<md-grid-tile>
 				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-birthDate" [(ngModel)]="editObjt.birthDate" placeholder="Data de nascimento">
+					<input name="endDate" mdInput [mdDatepicker]="endDatePicker" placeholder="Data de nascimento" [(ngModel)]="editObjt.birthDate" #endDate="ngModel">
+					<button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
+					<md-datepicker #endDatePicker></md-datepicker>
 				</md-input-container>
 			</md-grid-tile>
 			<md-grid-tile>
@@ -47,11 +49,20 @@
 				</md-input-container>
 			</md-grid-tile>
 			<md-grid-tile>
-				<md-input-container class="example-half-width">
-					<input mdInput placeholder="Estado" [mdAutocomplete]="auto" name="edit-state" [(ngModel)]="editObjt.state" (keyup)="filterS()">
+				<md-select placeholder="Estado" [(ngModel)]="editObjt.state" name="edit-state" class="example-full-width" (change)="filterStates()" >
+					<md-option *ngFor="let state of states" [value]="state.nome">
+						{{state.nome}}
+					</md-option>
+				</md-select>
+			</md-grid-tile>
+			<md-grid-tile>
+				<md-input-container class="example-full-width">
+					<input mdInput placeholder="Cidade" [mdAutocomplete]="auto" name="edit-citie" [formControl]="citieCtrl">
 				</md-input-container>
-				<md-autocomplete #auto="mdAutocomplete" class="example-half-width" name="state-auto-complete">
-					<md-option *ngFor="let state of filteredStates | async" [value]="state.nome">{{ state.nome }}</md-option>
+				<md-autocomplete #auto="mdAutocomplete">
+					<md-option *ngFor="let citie of filteredCities | async" [value]="citie">
+						{{ citie }}
+					</md-option>
 				</md-autocomplete>
 			</md-grid-tile>
 			<md-grid-tile class="input">
