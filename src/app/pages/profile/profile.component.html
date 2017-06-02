@@ -11,7 +11,7 @@
   <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
     <md-input-container class="full-width">
       <input mdInput name="name" type="text" placeholder="Nome" [(ngModel)]="user.name" #name="ngModel" required>
-      <md-error>Campo é obrigatório</md-error>
+      <md-error>Campo obrigatório</md-error>
     </md-input-container>
     <md-input-container class="full-width">
       <input
@@ -25,7 +25,7 @@
         required
         pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
       >
-      <md-error>{{name.value && !name.valid ? 'Campo deve ser do tipo email' : 'Campo é obrigatório'}}</md-error>
+      <md-error>{{name.value && !name.valid ? 'Campo deve ser do tipo email' : 'Campo obrigatório'}}</md-error>
     </md-input-container>
     <button
       md-raised-button
@@ -51,7 +51,7 @@
         #currentPassword="ngModel"
         required
       >
-      <md-error>Campo é obrigatório</md-error>
+      <md-error>Campo obrigatório</md-error>
     </md-input-container>
     <md-input-container class="full-width">
       <input
@@ -65,7 +65,7 @@
         required
         minlength="4"
       >
-      <md-error>{{password.value && password.value.length < 4 ? 'Senha deve ter no mínimo 4 caracteres' : 'Campo é obrigatório'}}</md-error>
+      <md-error>{{password.value && password.value.length < 4 ? 'Senha deve ter no mínimo 4 caracteres' : 'Campo obrigatório'}}</md-error>
     </md-input-container>
     <md-input-container class="full-width">
       <input
@@ -79,7 +79,7 @@
         required
         minlength="4"
       >
-      <md-error>{{confirmPassword.value && confirmPassword.value.length < 4 ? 'Confirmação de senha deve ter no mínimo 4 caracteres' : 'Campo é obrigatório'}}</md-error>
+      <md-error>{{confirmPassword.value && confirmPassword.value.length < 4 ? 'Confirmação de senha deve ter no mínimo 4 caracteres' : 'Campo obrigatório'}}</md-error>
     </md-input-container>
     <button
       md-raised-button

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import {
@@ -47,7 +47,12 @@ import { MdButtonModule,
   MdMenuModule,
   MdProgressBarModule,
   MdCardModule,
+  MdDialogModule,
+  MdAutocompleteModule,
   MdButtonToggleModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
+  MdSelectModule,
 } from '@angular/material';
 
 // pages
@@ -60,6 +65,13 @@ import { MenuComponent } from './pages/menu';
 import { DefaultComponent } from './pages/default';
 import { ProfileComponent } from './pages/profile';
 import { UsersComponent, NewUserComponent } from './pages/users';
+import { BeneficiariesComponent } from './pages/beneficiaries';
+import { DialogDeleteComponent } from './pages/beneficiaries/dialog.delete';
+import { EditBeneficiariesComponent } from './pages/beneficiaries-edit';
+import { ProjectsComponent } from './pages/projects';
+import { EditProjectsComponent } from './pages/projects-edit';
+import { CoursesComponent } from './pages/courses';
+import { EditCoursesComponent } from './pages/courses-edit';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -95,8 +107,16 @@ type StoreType = {
     DefaultComponent,
     ProfileComponent,
     UsersComponent,
-    NewUserComponent
+    BeneficiariesComponent,
+    DialogDeleteComponent,
+    EditBeneficiariesComponent,
+    NewUserComponent,
+    ProjectsComponent,
+    EditProjectsComponent,
+    CoursesComponent,
+    EditCoursesComponent
   ],
+  entryComponents: [DialogDeleteComponent],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
@@ -116,9 +136,15 @@ type StoreType = {
     MdProgressBarModule,
     MdCardModule,
     MdButtonToggleModule,
+    MdNativeDateModule,
+    MdDatepickerModule,
     ApiHttpModule,
     AuthModule,
-    CustomDirectivesModule
+    CustomDirectivesModule,
+    MdDialogModule,
+    MdAutocompleteModule,
+    MdSelectModule,
+    ReactiveFormsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
