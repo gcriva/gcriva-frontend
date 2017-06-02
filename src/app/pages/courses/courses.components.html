@@ -2,8 +2,9 @@
   <md-card class="person-card" *ngFor="let course of appState.state.courses">
     <md-card-header>
       <md-card-title>{{course.name}}</md-card-title>
-      <md-card-subtitle>{{course.startDate | date: 'dd/MM/yyyy' }}</md-card-subtitle>
+      <md-card-subtitle>{{course.startDate | date: 'dd/MM/yyyy' }} - {{course.place}}</md-card-subtitle>
     </md-card-header>
+    <md-card-content>{{course.description}}</md-card-content>
     <md-card-actions>
       <button color="primary" routerLink="/cursos/{{course.id}}" md-button>Editar</button>
       <button color="warn" md-button (click)="openDialogDelete(course)">Deletar</button>

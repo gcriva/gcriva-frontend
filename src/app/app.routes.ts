@@ -75,6 +75,11 @@ const SECURE_ROUTES: Routes = [
     data: { name: 'Cursos' }
   },
   {
+    path: 'cursos/new',
+    component: EditCoursesComponent,
+    data: { name: 'Edição de Cursos' }
+  },
+  {
     path: 'cursos/:id',
     component: EditCoursesComponent,
     data: { name: 'Edição de Cursos' }

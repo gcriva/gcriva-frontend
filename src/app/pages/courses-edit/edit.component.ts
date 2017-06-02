@@ -15,7 +15,12 @@ import 'rxjs/add/operator/map';
   templateUrl: './edit.components.html'
 })
 export class EditCoursesComponent {
-  public editObjt: any = {};
+  public course: any = {
+    beneficiaries: []
+  };
+  public beneficiaries: any[] = [];
+  public selectedValue: any;
+
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
@@ -24,22 +29,43 @@ export class EditCoursesComponent {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
-      this.editObjt = this.appState.state.courses.filter((course) => {
-        return course.id === params['id'];
-      })[0];
+      if (params.id) {
+        this.http.get(`/courses/${params.id}`)
+          .map((res) => res.json())
+          .subscribe(
+            (data) => {
+              this.course = data.course;
+            },
+            handleErrorResponse(this.snackBar)
+          );
+      }
     });
+
+    this.http.get('/beneficiaries')
+      .map((res) => res.json())
+      .subscribe(
+        (data) => {
+          this.beneficiaries = data.beneficiaries;
+        },
+        handleErrorResponse(this.snackBar)
+      );
+
+  }
+
+  public pushBeneficiarie() {
+    this.course.beneficiaries = this.selectedValue;
   }
 
   public save() {
-    if (this.editObjt.id) {
-      this.http.put('/courses/' + this.editObjt.id, this.editObjt)
+    if (this.course.id) {
+      this.http.put('/courses/' + this.course.id, { course: this.course})
         .subscribe((data) => {
             this.router.navigate(['cursos']);
           },
           handleErrorResponse(this.snackBar)
         );
     } else {
-      this.http.post('/courses', this.editObjt)
+      this.http.post('/courses', { course: this.course})
         .subscribe((data) => {
             this.router.navigate(['cursos']);
           },

@@ -52,6 +52,7 @@ import { MdButtonModule,
   MdButtonToggleModule,
   MdDatepickerModule,
   MdNativeDateModule,
+  MdSelectModule,
 } from '@angular/material';
 
 // pages
@@ -141,7 +142,8 @@ type StoreType = {
     AuthModule,
     CustomDirectivesModule,
     MdDialogModule,
-    MdAutocompleteModule
+    MdAutocompleteModule,
+    MdSelectModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
