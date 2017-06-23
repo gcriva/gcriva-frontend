@@ -4,6 +4,7 @@ import { MdSnackBar } from '@angular/material';
 import { JwtHelper } from 'angular2-jwt';
 import { AppState } from '../../app.service';
 import { ApiHttp } from '../../api-http.service';
+import { Meta } from '@angular/platform-browser';
 
 const jwtHelper = new JwtHelper();
 
@@ -22,8 +23,22 @@ export class LoginComponent implements OnInit {
     public http: ApiHttp,
     public snackBar: MdSnackBar,
     public router: Router,
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    private meta: Meta
+  ) {
+    setTimeout(() => {
+      this.meta.addTag({ property: 'og:title', content: 'Oia nois ae bruxão!' });
+      this.meta.addTag({
+        property: 'og:description',
+        content: 'Aqui é pra quem é doido e usa meta nos angular!'
+      });
+      this.meta.addTag({
+        property: 'og:image',
+        // tslint:disable-next-line:max-line-length
+        content: 'http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg'
+      });
+    }, 500);
+  }
 
   public login() {
     this.http.post('/login', this.loginData)
