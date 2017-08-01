@@ -57,8 +57,8 @@ export class EditCoursesComponent {
   }
 
   public save() {
-    if (this.course.id) {
-      this.http.put('/courses/' + this.course.id, { course: this.course})
+    if (this.course._id) {
+      this.http.put('/courses/' + this.course._id, { course: this.course})
         .subscribe((data) => {
             this.router.navigate(['cursos']);
           },

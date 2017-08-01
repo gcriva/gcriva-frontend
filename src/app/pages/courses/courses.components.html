@@ -6,7 +6,7 @@
     </md-card-header>
     <md-card-content>{{course.description}}</md-card-content>
     <md-card-actions>
-      <button color="primary" routerLink="/cursos/{{course.id}}" md-button>Editar</button>
+      <button color="primary" routerLink="/cursos/{{course._id}}" md-button>Editar</button>
       <button color="warn" md-button (click)="openDialogDelete(course)">Deletar</button>
     </md-card-actions>
   </md-card>

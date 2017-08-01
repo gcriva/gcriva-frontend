@@ -37,7 +37,7 @@ export class CoursesComponent implements OnInit {
   }
 
   public delete(project) {
-    this.http.delete('/courses/' + project.id)
+    this.http.delete('/courses/' + project._id)
       .map((res) => res.json())
       .subscribe((data) => {
         this.ngOnInit();

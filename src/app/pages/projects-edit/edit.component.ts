@@ -38,8 +38,8 @@ export class EditProjectsComponent {
   }
 
   public save() {
-    if (this.project.id) {
-      this.http.put('/projects/' + this.project.id, { project: this.project })
+    if (this.project._id) {
+      this.http.put('/projects/' + this.project._id, { project: this.project })
         .subscribe((data) => {
             this.router.navigate(['projetos']);
           },

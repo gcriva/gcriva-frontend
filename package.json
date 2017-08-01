@@ -164,7 +164,7 @@
     "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
   },
   "engines": {
-    "node": ">= 4.2.1",
+    "node": ">= 6.11.1",
     "npm": ">= 3"
   }
 }

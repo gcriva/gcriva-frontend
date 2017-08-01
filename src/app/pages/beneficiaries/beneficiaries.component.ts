@@ -37,7 +37,7 @@ export class BeneficiariesComponent implements OnInit {
   }
 
   public delete(person) {
-    this.http.delete('/beneficiaries/' + person.id)
+    this.http.delete('/beneficiaries/' + person._id)
       .map((res) => res.json())
       .subscribe((data) => {
         this.ngOnInit();

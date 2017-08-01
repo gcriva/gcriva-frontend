@@ -10,9 +10,9 @@
       <md-card-subtitle>{{user.email}}</md-card-subtitle>
     </md-card-header>
     <md-card-actions>
-      <button color="warn" md-button (click)="openDeleteDialog(user.id)">Deletar</button>
+      <button color="warn" md-button (click)="openDeleteDialog(user._id)">Deletar</button>
     </md-card-actions>
-    <div class="delete-confirm" *ngIf="userToClose === user.id" (click)="openDeleteDialog(user.id)">
+    <div class="delete-confirm" *ngIf="userToClose === user._id" (click)="openDeleteDialog(user._id)">
       <em>Tem certeza?</em>
       <div class="close-actions-wrapper">
         <button md-button (click)="dismissDeleteConfirm()">Não</button>

@@ -55,8 +55,8 @@ export class EditBeneficiariesComponent {
 
 	public save() {
 		this.editObjt.city = this.citieCtrl.value;
-		if (this.editObjt.id) {
-			this.http.put('/beneficiaries/' + this.editObjt.id, { beneficiary: this.editObjt })
+		if (this.editObjt._id) {
+			this.http.put('/beneficiaries/' + this.editObjt._id, { beneficiary: this.editObjt })
 				.subscribe((data) => {
 						this.router.navigate(['beneficiarios']);
 					},

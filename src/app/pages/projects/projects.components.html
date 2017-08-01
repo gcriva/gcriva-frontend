@@ -5,14 +5,14 @@
       <md-card-subtitle>{{project.startDate | date: 'dd/MM/yyyy' }}</md-card-subtitle>
     </md-card-header>
     <md-card-actions>
-      <button color="primary" routerLink="/projetos/{{project.id}}" md-button>Editar</button>
-      <button color="warn" md-button (click)="openDeleteDialog(project.id)">Deletar</button>
+      <button color="primary" routerLink="/projetos/{{project._id}}" md-button>Editar</button>
+      <button color="warn" md-button (click)="openDeleteDialog(project._id)">Deletar</button>
     </md-card-actions>
-    <div class="delete-confirm" *ngIf="projectToDelete === project.id" (click)="openDeleteDialog(project.id)">
+    <div class="delete-confirm" *ngIf="projectToDelete === project._id" (click)="openDeleteDialog(project._id)">
       <em>Tem certeza?</em>
       <div class="close-actions-wrapper">
         <button md-button (click)="dismissDeleteConfirm()">Não</button>
-        <button color="warn" md-button (click)="delete(project.id)">Sim</button>
+        <button color="warn" md-button (click)="delete(project._id)">Sim</button>
       </div>
     </div>
   </md-card>

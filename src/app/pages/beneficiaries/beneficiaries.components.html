@@ -5,7 +5,7 @@
       <md-card-subtitle>{{person.email}}</md-card-subtitle>
     </md-card-header>
     <md-card-actions>
-      <button color="primary" routerLink="/beneficiarios/{{person.id}}" md-button>Editar</button>
+      <button color="primary" routerLink="/beneficiarios/{{person._id}}" md-button>Editar</button>
       <button color="warn" md-button (click)="openDialogDelete(person)">Deletar</button>
     </md-card-actions>
   </md-card>
