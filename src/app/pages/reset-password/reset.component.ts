@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Http } from '@angular/http';
+import { ApiHttp } from '../../api-http.service';
 import { MdSnackBar } from '@angular/material';
 
 @Component({
@@ -14,7 +14,7 @@ export class ResetPasswordComponent {
     public reset: any = {};
     constructor(
         public route: ActivatedRoute,
-        public http: Http,
+        public http: ApiHttp,
         public snackBar: MdSnackBar,
         private router: Router
     ) {
