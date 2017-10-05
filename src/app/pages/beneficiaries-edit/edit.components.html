@@ -1,73 +1,111 @@
 <div class="main-section">
-	<form name="update-form">
-		<md-grid-list cols="1" rowHeight="90px">
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-name" [(ngModel)]="editObjt.name" placeholder="Nome">
-				</md-input-container>
-			</md-grid-tile>
-			<!--<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="email" name="edit-email" [(ngModel)]="editObjt.email" placeholder="Email">
-				</md-input-container>
-			</md-grid-tile>-->
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-motherName" [(ngModel)]="editObjt.motherName" placeholder="Nome da mãe">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-fatherName" [(ngModel)]="editObjt.fatherName" placeholder="Nome do pai">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-childName" [(ngModel)]="editObjt.childName" placeholder="Nome do criança">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-guardianName" [(ngModel)]="editObjt.guardianName" placeholder="Nome do responsável">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-grade" [(ngModel)]="editObjt.grade" placeholder="Grau de parentesco">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input name="endDate" mdInput [mdDatepicker]="endDatePicker" placeholder="Data de nascimento" [(ngModel)]="editObjt.birthDate" #endDate="ngModel">
-					<button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
-					<md-datepicker #endDatePicker></md-datepicker>
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput type="text" name="edit-street" [(ngModel)]="editObjt.street" placeholder="Endereço">
-				</md-input-container>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-select placeholder="Estado" [(ngModel)]="editObjt.state" name="edit-state" class="example-full-width" (change)="filterStates()" >
-					<md-option *ngFor="let state of states" [value]="state.nome">
-						{{state.nome}}
+	<form class="form" name="beneficiaryForm" (ngSubmit)="save()" #beneficiaryForm="ngForm">
+		<div class="row">
+			<md-input-container class="full-width">
+				<input mdInput type="text" name="edit-name" [(ngModel)]="beneficiary.name" placeholder="Nome" #name="ngModel" required>
+				<md-error>Campo obrigatório</md-error>
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="edit-motherName" [(ngModel)]="beneficiary.motherName" placeholder="Nome da mãe">
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="edit-fatherName" [(ngModel)]="beneficiary.fatherName" placeholder="Nome do pai">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="edit-guardianName" [(ngModel)]="beneficiary.guardianName" placeholder="Nome do responsável">
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="edit-grade" [(ngModel)]="beneficiary.grade" placeholder="Série escolar">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input name="endDate" mdInput [mdDatepicker]="endDatePicker" placeholder="Data de nascimento" [(ngModel)]="beneficiary.birthDate" #endDate="ngModel">
+				<button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
+				<md-datepicker #endDatePicker></md-datepicker>
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="edit-childNumber" [(ngModel)]="beneficiary.childNumber" placeholder="Child Number">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="full-width">
+				<input mdInput type="text" name="edit-street" [(ngModel)]="beneficiary.street" placeholder="Endereço">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-select placeholder="Estado" class="half-width" [(ngModel)]="beneficiary.state" name="edit-state" class="full-width" (change)="filterStates()" >
+				<md-option *ngFor="let state of states" [value]="state.nome">
+					{{state.nome}}
+				</md-option>
+			</md-select>
+		</div>
+		<div class="row">
+			<md-input-container class="full-width">
+				<input mdInput placeholder="Cidade" [mdAutocomplete]="auto" name="edit-citie" [formControl]="citieCtrl">
+			</md-input-container>
+			<md-autocomplete #auto="mdAutocomplete">
+				<md-option *ngFor="let city of filteredCities | async" [value]="city">
+					{{ city }}
+				</md-option>
+			</md-autocomplete>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="sponsorName" [(ngModel)]="beneficiary.sponsorName" placeholder="Nome do padrinho">
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="sponsorNationality" [(ngModel)]="beneficiary.sponsorNationality" placeholder="Nacionalidade do padrinho">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input name="welcomeDate" mdInput [mdDatepicker]="welcomeDatePicker" placeholder="Data de boas vindas" [(ngModel)]="beneficiary.welcomeDate" #welcomeDate="ngModel">
+				<button mdSuffix [mdDatepickerToggle]="welcomeDatePicker"></button>
+				<md-datepicker #welcomeDatePicker></md-datepicker>
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="gender" [(ngModel)]="beneficiary.gender" placeholder="Gênero">
+			</md-input-container>
+		</div>
+		<div class="row">
+			<md-input-container class="half-width">
+				<input name="exitDate" mdInput [mdDatepicker]="exitDatePicker" placeholder="Data de saída" [(ngModel)]="beneficiary.exitDate" #exitDate="ngModel">
+				<button mdSuffix [mdDatepickerToggle]="exitDatePicker"></button>
+				<md-datepicker #exitDatePicker></md-datepicker>
+			</md-input-container>
+			<md-input-container class="half-width">
+				<input mdInput type="text" name="exitReason" [(ngModel)]="beneficiary.exitReason" placeholder="Razão da saída">
+			</md-input-container>
+		</div>
+
+		<div class="row">
+			<div class="full-width">
+				<hr style="margin-bottom: 20px" />
+				<md-select class="full-width" multiple class="select-container" placeholder="Selecione as oficinas" [(ngModel)]="selectedWorkshops" name="edit-beneficiaries" (change)="setWorkshops()" >
+					<md-option *ngFor="let workshop of workshops" [value]="workshop">
+						{{workshop.name}}
 					</md-option>
 				</md-select>
-			</md-grid-tile>
-			<md-grid-tile>
-				<md-input-container class="example-full-width">
-					<input mdInput placeholder="Cidade" [mdAutocomplete]="auto" name="edit-citie" [formControl]="citieCtrl">
-				</md-input-container>
-				<md-autocomplete #auto="mdAutocomplete">
-					<md-option *ngFor="let citie of filteredCities | async" [value]="citie">
-						{{ citie }}
-					</md-option>
-				</md-autocomplete>
-			</md-grid-tile>
-			<md-grid-tile class="input">
-				<button md-raised-button type="submit" (click)="save()">Salvar</button>
-			</md-grid-tile>
-		</md-grid-list>
+		
+				<h4>Oficinas em que participa</h4>
+				<ul>
+					<li *ngFor="let workshop of beneficiary.workshops">{{workshop.name}}</li>
+				</ul>
+			</div>
+		</div>
+
+		<button
+			md-fab
+			color="primary"
+			type="submit"
+			[disabled]="!beneficiaryForm.form.valid"
+		>
+			<md-icon>save</md-icon>
+		</button>
 	</form>
 </div>

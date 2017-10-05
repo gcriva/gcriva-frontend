@@ -10,15 +10,12 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'courses-edit',
+  selector: 'workshops-edit',
   styleUrls: ['./edit-components.scss'],
   templateUrl: './edit.components.html'
 })
-export class EditCoursesComponent {
-  public course: any = {
-    beneficiaries: []
-  };
-  public beneficiaries: any[] = [];
+export class EditWorkshopsComponent {
+  public workshop: any = {};
   public selectedValue: any;
 
   constructor(
@@ -30,44 +27,30 @@ export class EditCoursesComponent {
   ) {
     this.route.params.subscribe((params) => {
       if (params.id) {
-        this.http.get(`/courses/${params.id}`)
+        this.http.get(`/workshops/${params.id}`)
           .map((res) => res.json())
           .subscribe(
             (data) => {
-              this.course = data.course;
+              this.workshop = data.workshop;
             },
             handleErrorResponse(this.snackBar)
           );
       }
     });
-
-    this.http.get('/beneficiaries')
-      .map((res) => res.json())
-      .subscribe(
-        (data) => {
-          this.beneficiaries = data.beneficiaries;
-        },
-        handleErrorResponse(this.snackBar)
-      );
-
-  }
-
-  public pushBeneficiarie() {
-    this.course.beneficiaries = this.selectedValue;
   }
 
   public save() {
-    if (this.course._id) {
-      this.http.put('/courses/' + this.course._id, { course: this.course})
+    if (this.workshop._id) {
+      this.http.put('/workshops/' + this.workshop._id, { workshop: this.workshop})
         .subscribe((data) => {
-            this.router.navigate(['cursos']);
+            this.router.navigate(['oficinas']);
           },
           handleErrorResponse(this.snackBar)
         );
     } else {
-      this.http.post('/courses', { course: this.course})
+      this.http.post('/workshops', { workshop: this.workshop})
         .subscribe((data) => {
-            this.router.navigate(['cursos']);
+            this.router.navigate(['oficinas']);
           },
           handleErrorResponse(this.snackBar)
         );

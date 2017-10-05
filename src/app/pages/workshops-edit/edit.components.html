@@ -1,0 +1,33 @@
+<div class="main-section">
+	<form (ngSubmit)="save()" #updateForm="ngForm">
+		<md-input-container class="example-full-width">
+			<input mdInput type="text" name="edit-name" [(ngModel)]="workshop.name" placeholder="Nome">
+		</md-input-container>
+		<md-input-container>
+			<input name="startDate" mdInput [mdDatepicker]="startDatePicker" placeholder="Data de início" [(ngModel)]="workshop.startDate" #startDate="ngModel" required>
+			<button mdSuffix [mdDatepickerToggle]="startDatePicker"></button>
+			<md-datepicker #startDatePicker></md-datepicker>
+			<md-error>Campo obrigatório</md-error>
+		</md-input-container>
+		<md-input-container>
+			<input name="endDate" mdInput [mdDatepicker]="endDatePicker" placeholder="Data de término" [(ngModel)]="workshop.endDate" #endDate="ngModel">
+			<button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
+			<md-datepicker #endDatePicker></md-datepicker>
+		</md-input-container>
+		<md-input-container class="example-full-width">
+			<input mdInput type="text" name="edit-place" [(ngModel)]="workshop.place" placeholder="Local">
+		</md-input-container>
+		<md-input-container class="example-full-width">
+			<input mdInput type="text" name="edit-description" [(ngModel)]="workshop.description" placeholder="Descrição">
+		</md-input-container>
+		<button
+			color="primary"
+			md-fab
+			type="submit"
+			[disabled]="!updateForm.form.valid"
+			style="display: block"
+		>
+			<md-icon>save</md-icon>
+		</button>
+	</form>
+</div>

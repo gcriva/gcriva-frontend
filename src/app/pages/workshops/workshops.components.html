@@ -1,0 +1,15 @@
+<div class="main-section">
+  <md-card class="workshop-card" *ngFor="let workshop of appState.state.workshops">
+    <md-card-header>
+      <md-card-title>{{workshop.name}}</md-card-title>
+      <md-card-subtitle>{{workshop.startDate | date: 'dd/MM/yyyy' }} - {{workshop.place}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>{{workshop.description}}</md-card-content>
+    <md-card-actions>
+      <button color="primary" routerLink="/oficinas/{{workshop._id}}" md-button>Editar</button>
+      <button color="warn" md-button (click)="openDialogDelete(workshop)">Deletar</button>
+    </md-card-actions>
+  </md-card>
+</div>
+
+<a class="button-float" md-fab routerLink="/oficinas/nova"><md-icon>add</md-icon></a>

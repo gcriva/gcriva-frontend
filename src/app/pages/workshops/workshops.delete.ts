@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'courses-delete',
-  templateUrl: './courses-delete.html',
+  selector: 'workshops-delete',
+  templateUrl: './workshops-delete.html',
   styles: [`
     .label {
         display: inline-block;

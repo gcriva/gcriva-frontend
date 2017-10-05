@@ -6,15 +6,15 @@ import { AppState } from '../../app.service';
 import { handleErrorResponse } from '../../utils';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
-import { DialogDeleteComponent } from './courses.delete';
+import { DialogDeleteComponent } from './workshops.delete';
 
 @Component({
-  selector: 'courses',
-  styleUrls: ['./courses-components.scss'],
-  templateUrl: './courses.components.html'
+  selector: 'workshops',
+  styleUrls: ['./workshops-components.scss'],
+  templateUrl: './workshops.components.html'
 })
-export class CoursesComponent implements OnInit {
-  public currentCourses: any = {};
+export class WorkshopsComponent implements OnInit {
+  public currentWorkshop: any = {};
   constructor(
     public http: AuthHttp,
     public snackBar: MdSnackBar,
@@ -23,10 +23,10 @@ export class CoursesComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.http.get('/courses')
+    this.http.get('/workshops')
       .map((res) => res.json())
       .subscribe((data) => {
-        this.appState.set('courses', data.courses);
+        this.appState.set('workshops', data.workshops);
       }, handleErrorResponse(this.snackBar));
   }
 
@@ -37,7 +37,7 @@ export class CoursesComponent implements OnInit {
   }
 
   public delete(project) {
-    this.http.delete('/courses/' + project._id)
+    this.http.delete('/workshops/' + project._id)
       .map((res) => res.json())
       .subscribe((data) => {
         this.ngOnInit();
@@ -45,11 +45,11 @@ export class CoursesComponent implements OnInit {
   }
 
   public openDialogDelete(project) {
-    this.currentCourses = project;
+    this.currentWorkshop = project;
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.delete(this.currentCourses);
+        this.delete(this.currentWorkshop);
       }
     });
   }
