@@ -14,8 +14,8 @@ import { BeneficiariesComponent } from './pages/beneficiaries';
 import { EditBeneficiariesComponent } from './pages/beneficiaries-edit';
 import { ProjectsComponent } from './pages/projects';
 import { EditProjectsComponent } from './pages/projects-edit';
-import { CoursesComponent } from './pages/courses';
-import { EditCoursesComponent } from './pages/courses-edit';
+import { WorkshopsComponent } from './pages/workshops';
+import { EditWorkshopsComponent } from './pages/workshops-edit';
 
 import { DataResolver } from './app.resolver';
 import { AuthGuard } from './auth.guard';
@@ -74,19 +74,19 @@ const SECURE_ROUTES: Routes = [
     data: { name: 'Editar projeto' }
   },
   {
-    path: 'cursos',
-    component: CoursesComponent,
-    data: { name: 'Cursos' }
+    path: 'oficinas',
+    component: WorkshopsComponent,
+    data: { name: 'Oficinas' }
   },
   {
-    path: 'cursos/new',
-    component: EditCoursesComponent,
-    data: { name: 'Edição de Cursos' }
+    path: 'oficinas/nova',
+    component: EditWorkshopsComponent,
+    data: { name: 'Edição de Oficina' }
   },
   {
-    path: 'cursos/:id',
-    component: EditCoursesComponent,
-    data: { name: 'Edição de Cursos' }
+    path: 'oficinas/:id',
+    component: EditWorkshopsComponent,
+    data: { name: 'Edição de Oficina' }
   }
 ];
 

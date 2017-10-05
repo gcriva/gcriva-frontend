@@ -6,6 +6,20 @@
   width: 100%;
 }
 
-.example-half-width {
-  width: 50%;
+.half-width {
+  width: 47%;
+
+  &:first-child {
+    margin-right: auto;
+  }
+}
+
+.form {
+  padding-bottom: 250px;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
 }
